@@ -42,7 +42,7 @@ class Solver(object):
 		self.UnetLayer = config.UnetLayer
 		self.first_layer_numKernel = config.first_layer_numKernel
 		self.corregistration = config.corregistration
-		self.device = torch.device('cuda: %d' % config.cuda_idx)
+		self.device = torch.device('cuda')  #: %d' % config.cuda_idx)
 
 		# Hyper-parameters
 		self.initial_lr = config.initial_lr
@@ -219,8 +219,8 @@ class Solver(object):
 				os.makedirs(this_directory)
 
 		# save current configs
-		copyfile('./deep_learning_model/config_settings.ini', self.loss_history_path + 'config_settings.ini')
-		copyfile('./deep_learning_model/config.py', self.loss_history_path + 'config.py')
+		copyfile('/content/DL-BET/config_settings.ini', self.loss_history_path + 'config_settings.ini')
+		copyfile('/content/DL-BET/config.py', self.loss_history_path + 'config.py')
 
 		if os.path.isfile(best_unet_path):
 			# Load the pretrained Encoder

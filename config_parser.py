@@ -4,7 +4,7 @@ from collections.abc import Mapping
 import os
 
 class Config_Parser(Mapping):
-    def __init__(self, setting_file = './deep_learning_model/config_settings.ini'):
+    def __init__(self, setting_file = '/content/DL-BET/config_settings.ini'):
         config = configparser.ConfigParser()
         config.read(setting_file)
         self.settings_dict = _parse_values(config)

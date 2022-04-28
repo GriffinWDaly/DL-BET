@@ -96,13 +96,13 @@ class NiftiDataset(data.Dataset):
 		input_nifti_scan = nib.load(input_path).get_fdata().astype(np.float32)
 		# Scan-max normalization
 		input_nifti_scan = input_nifti_scan / input_nifti_scan.max()
-		
+		input_path = "/content" + input_path[1:]
 		'''
 		CHECK HERE~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		Check for the correct string split and extension.
 		'''
 		filename = input_path.split('/')[-1]
-		GT_path = self.GT_folder + filename.replace('pre_WH_N4corrected_iso60','new_gt_iso60-edited')
+		GT_path = self.GT_folder + filename.replace('pre_WH_N4corrected_iso60','brainmask_iso60')
 		GT_nifti_scan = nib.load(GT_path).get_fdata().astype(np.float32)
 		
 		if self.augment:
